@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SlideShow from './SlideShow';
 
 function App() {
+  // Put your images here
   const images = [
     {
       url:
@@ -15,7 +16,7 @@ function App() {
       url:
         'https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png',
     },
-    // { url: 'https://avatars3.githubusercontent.com/u/12551863?s=400&v=4' },
+    { url: 'https://avatars3.githubusercontent.com/u/12551863?s=400&v=4' },
   ];
 
   const [speed, setSpeed] = useState(20);
