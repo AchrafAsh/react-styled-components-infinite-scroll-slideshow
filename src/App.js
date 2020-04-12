@@ -38,29 +38,58 @@ function App() {
         imageHeight={imageHeight}
         imageWidth={imageWidth}
       />
-      <div style={{ width: '70%' }}>
-        <div>
+      <div style={{ width: '300px' }}>
+        <div
+          style={{
+            width: '100%',
+            height: '50px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+          }}
+        >
           <label>Speed</label>
           <input
-            style={{ margin: '10px' }}
-            type='text'
+            type='range'
+            min='0'
+            max='200'
             value={speed}
             onChange={(e) => setSpeed(e.target.value)}
           />
+          {speed}
         </div>
-        <div>
+        <div
+          style={{
+            width: '100%',
+            height: '50px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+          }}
+        >
           <label>Image height</label>
           <input
-            style={{ margin: '10px' }}
+            style={{ padding: '4px' }}
             type='text'
             value={imageHeight}
             onChange={(e) => setImageHeight(e.target.value)}
           />
         </div>
-        <div>
+        <div
+          style={{
+            width: '100%',
+            height: '50px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+          }}
+        >
           <label>Image width</label>
           <input
-            style={{ margin: '10px' }}
+            style={{ padding: '4px' }}
             type='text'
             value={imageWidth}
             onChange={(e) => setImageWidth(e.target.value)}
