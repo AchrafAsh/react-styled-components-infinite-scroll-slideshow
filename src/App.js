@@ -12,15 +12,11 @@ const InfiniteSlideShow = styled.div`
   width: 150vw;
   display: grid;
   grid-template-columns: ${(props) =>
-    `repeat(${props.length}, ${150 / props.length})`};
-  .gatsby-image-wrapper {
-    place-self: center center;
-    width: 15vw;
-  }
+    `repeat(${props.length}, ${150 / props.length}vw)`};
   animation: ${(props) =>
     props.right
-      ? 'bannerMoveRight 20s linear infinite'
-      : 'bannerMoveLeft 20s linear infinite'};
+      ? `bannerMoveRight ${100 / props.speed}s linear infinite`
+      : `bannerMoveLeft ${100 / props.speed}s linear infinite`};
   @keyframes bannerMoveLeft {
     0% {
       transform: translateX(0);
@@ -70,7 +66,8 @@ const InfiniteSlideShow = styled.div`
 const Image = styled.img`
   grid-row: 1;
   grid-column: ${(props) => props.col};
-  height: 200px;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
   width: auto;
   place-self: center center;
 `;
@@ -99,19 +96,32 @@ function App() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        boxSizing: 'border-box',
       }}
     >
-      <SlideShowWrapper length={imageList.length} speed={1}>
-        <InfiniteSlideShow length={imageList.length} right={false}>
+      <SlideShowWrapper length={imageList.length}>
+        <InfiniteSlideShow length={imageList.length} speed={2}>
           {imageList &&
             imageList.map((image, index) => (
-              <Image src={image.url} col={index + 1} key={index} />
+              <Image
+                height='200px'
+                width='auto'
+                src={image.url}
+                col={index + 1}
+                key={index}
+              />
             ))}
         </InfiniteSlideShow>
-        <InfiniteSlideShow length={imageList.length} right={true}>
+        <InfiniteSlideShow length={imageList.length} right speed={2}>
           {imageList &&
             imageList.map((image, index) => (
-              <Image src={image.url} col={index + 1} key={index} />
+              <Image
+                height='200'
+                width='auto'
+                src={image.url}
+                col={index + 1}
+                key={index}
+              />
             ))}
         </InfiniteSlideShow>
       </SlideShowWrapper>
